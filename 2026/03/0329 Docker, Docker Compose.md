@@ -43,9 +43,9 @@
 - 2. 동작 흐름
   ```
   Dockerfile → Image → Container
-  Dockerfile: 이미지 생성을 위한 설정 파일
-  Image: 실행 환경이 저장된 결과물
-  Container: 이미지를 실행한 상태
+  Dockerfile   : 이미지 생성을 위한 설정 파일
+  Image        : 실행 환경이 저장된 결과물
+  Container    : 이미지를 실행한 상태
   ```
 - 3. Image
 
