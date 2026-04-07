@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.locking.item.ItemServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-04-06T05:49:24.176Z" hostname="DESKTOP-BMKRPOE" time="7.941">
+  <properties/>
+  <testcase name="testPessimisticLocking()" classname="com.example.locking.item.ItemServiceTest" time="0.989"/>
+  <system-out><![CDATA[14:49:24.454 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.locking.item.ItemServiceTest]: ItemServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:49:24.564 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.locking.LockingApplication for test class com.example.locking.item.ItemServiceTest
+14:49:24.659 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.locking.item.ItemServiceTest]: ItemServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:49:24.661 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.locking.LockingApplication for test class com.example.locking.item.ItemServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.5)
+
+2026-04-06T14:49:25.084+09:00  INFO 716 --- [locking] [    Test worker] c.example.locking.item.ItemServiceTest   : Starting ItemServiceTest using Java 17.0.18 with PID 716 (started by user in C:\Users\user\Desktop\spring\practice\locking\locking)
+2026-04-06T14:49:25.086+09:00  INFO 716 --- [locking] [    Test worker] c.example.locking.item.ItemServiceTest   : No active profile set, falling back to 1 default profile: "default"
+2026-04-06T14:49:25.996+09:00  INFO 716 --- [locking] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-06T14:49:26.079+09:00  INFO 716 --- [locking] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 1 JPA repository interface.
+2026-04-06T14:49:26.631+09:00  INFO 716 --- [locking] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-06T14:49:26.930+09:00  INFO 716 --- [locking] [    Test worker] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Driver does not support get/set network timeout for connections. (feature not supported)
+2026-04-06T14:49:26.930+09:00  INFO 716 --- [locking] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.hsqldb.jdbc.JDBCConnection@734fbae3
+2026-04-06T14:49:26.947+09:00  INFO 716 --- [locking] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-06T14:49:27.012+09:00  INFO 716 --- [locking] [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-04-06T14:49:27.166+09:00  INFO 716 --- [locking] [    Test worker] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-04-06T14:49:28.132+09:00  INFO 716 --- [locking] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-06T14:49:28.265+09:00  INFO 716 --- [locking] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:hsqldb:mem:54a43194-16b5-4418-9856-9cecea5f23e9]
+	Database driver: HSQL Database Engine Driver
+	Database dialect: HSQLDialect
+	Database version: 2.7.3
+	Default catalog/schema: PUBLIC/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-04-06T14:49:29.097+09:00  INFO 716 --- [locking] [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-06T14:49:29.118+09:00 DEBUG 716 --- [locking] [    Test worker] org.hibernate.SQL                        : 
+    drop table if exists item cascade 
+2026-04-06T14:49:29.123+09:00 DEBUG 716 --- [locking] [    Test worker] org.hibernate.SQL                        : 
+    create table item (
+        quantity integer,
+        id bigint generated by default as identity (start with 1),
+        name varchar(255),
+        primary key (id)
+    )
+2026-04-06T14:49:29.126+09:00  INFO 716 --- [locking] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-06T14:49:29.239+09:00  INFO 716 --- [locking] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-04-06T14:49:30.418+09:00  WARN 716 --- [locking] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-06T14:49:31.109+09:00  INFO 716 --- [locking] [    Test worker] c.example.locking.item.ItemServiceTest   : Started ItemServiceTest in 6.378 seconds (process running for 8.1)
+2026-04-06T14:49:31.745+09:00  INFO 716 --- [locking] [    Test worker] c.example.locking.item.ItemServiceTest   : 초기 아이템 데이터를 설정합니다.
+2026-04-06T14:49:31.795+09:00 DEBUG 716 --- [locking] [    Test worker] org.hibernate.SQL                        : 
+    insert 
+    into
+        item
+        (name, quantity, id) 
+    values
+        (?, ?, default)
+2026-04-06T14:49:31.806+09:00 TRACE 716 --- [locking] [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Item 1]
+2026-04-06T14:49:31.806+09:00 TRACE 716 --- [locking] [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (2:INTEGER) <- [10]
+2026-04-06T14:49:31.854+09:00  INFO 716 --- [locking] [       Thread-5] c.example.locking.item.ItemServiceTest   : 스레드 2: 아이템 수량 업데이트를 시도합니다.
+2026-04-06T14:49:31.854+09:00  INFO 716 --- [locking] [       Thread-4] c.example.locking.item.ItemServiceTest   : 스레드 1: 아이템 수량 업데이트를 시도합니다.
+2026-04-06T14:49:32.019+09:00 DEBUG 716 --- [locking] [       Thread-5] org.hibernate.SQL                        : 
+    select
+        i1_0.id,
+        i1_0.name,
+        i1_0.quantity 
+    from
+        item i1_0 
+    where
+        i1_0.id=? 
+    for
+        update
+2026-04-06T14:49:32.019+09:00 DEBUG 716 --- [locking] [       Thread-4] org.hibernate.SQL                        : 
+    select
+        i1_0.id,
+        i1_0.name,
+        i1_0.quantity 
+    from
+        item i1_0 
+    where
+        i1_0.id=? 
+    for
+        update
+2026-04-06T14:49:32.023+09:00 TRACE 716 --- [locking] [       Thread-5] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1]
+2026-04-06T14:49:32.023+09:00 TRACE 716 --- [locking] [       Thread-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1]
+2026-04-06T14:49:32.066+09:00 DEBUG 716 --- [locking] [       Thread-4] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        quantity=? 
+    where
+        id=?
+2026-04-06T14:49:32.068+09:00 TRACE 716 --- [locking] [       Thread-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Item 1]
+2026-04-06T14:49:32.068+09:00 TRACE 716 --- [locking] [       Thread-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:INTEGER) <- [20]
+2026-04-06T14:49:32.069+09:00 TRACE 716 --- [locking] [       Thread-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:BIGINT) <- [1]
+2026-04-06T14:49:32.074+09:00  INFO 716 --- [locking] [       Thread-4] c.example.locking.item.ItemServiceTest   : 스레드 1: 아이템 수량 업데이트 완료.
+2026-04-06T14:49:32.076+09:00 DEBUG 716 --- [locking] [       Thread-5] org.hibernate.SQL                        : 
+    update
+        item 
+    set
+        name=?,
+        quantity=? 
+    where
+        id=?
+2026-04-06T14:49:32.077+09:00 TRACE 716 --- [locking] [       Thread-5] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Item 1]
+2026-04-06T14:49:32.077+09:00 TRACE 716 --- [locking] [       Thread-5] org.hibernate.orm.jdbc.bind              : binding parameter (2:INTEGER) <- [30]
+2026-04-06T14:49:32.078+09:00 TRACE 716 --- [locking] [       Thread-5] org.hibernate.orm.jdbc.bind              : binding parameter (3:BIGINT) <- [1]
+2026-04-06T14:49:32.078+09:00  INFO 716 --- [locking] [       Thread-5] c.example.locking.item.ItemServiceTest   : 스레드 2: 아이템 수량 업데이트 완료.
+2026-04-06T14:49:32.095+09:00 DEBUG 716 --- [locking] [    Test worker] org.hibernate.SQL                        : 
+    select
+        i1_0.id,
+        i1_0.name,
+        i1_0.quantity 
+    from
+        item i1_0 
+    where
+        i1_0.id=?
+2026-04-06T14:49:32.096+09:00 TRACE 716 --- [locking] [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter (1:BIGINT) <- [1]
+2026-04-06T14:49:32.099+09:00  INFO 716 --- [locking] [    Test worker] c.example.locking.item.ItemServiceTest   : 최종 아이템 수량: 30
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
